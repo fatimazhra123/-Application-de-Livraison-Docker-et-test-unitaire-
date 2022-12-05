@@ -1,0 +1,24 @@
+# version docker composeversion: "3.8"
+version: '3.8'
+services:
+
+  backend:
+  
+    build: ./Back-end
+    ports:
+      - "8000:8000"
+    volumes:
+      # - logs:/app/logs
+      - ./Back-end:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./FrontEnd
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./FrontEnd/src:/app/src
+ 
+volumes:
+  mongodb-data:
+    driver: local
